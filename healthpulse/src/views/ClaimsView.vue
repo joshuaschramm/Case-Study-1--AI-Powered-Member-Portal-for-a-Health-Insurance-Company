@@ -1,8 +1,10 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useClaimsStore } from '../stores/claims'
 import { useMemberStore } from '../stores/member'
 import { Bar } from 'vue-chartjs'
+
+const claimsChartRef = ref(null)
 
 const claimsStore = useClaimsStore()
 const memberStore = useMemberStore()
@@ -50,13 +52,29 @@ const chartData = computed(() => {
     datasets: [
       {
         label: 'Plan Paid',
-        backgroundColor: '#1565C0',
+        backgroundColor: (ctx) => {
+          const chart = ctx.chart
+          const { ctx: canvasCtx, chartArea } = chart
+          if (!chartArea) return '#1565C0'
+          const gradient = canvasCtx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top)
+          gradient.addColorStop(0, '#1976D2')
+          gradient.addColorStop(1, '#0D47A1')
+          return gradient
+        },
         data: planPaid,
         borderRadius: 4,
       },
       {
         label: 'Your Cost',
-        backgroundColor: '#FF6F00',
+        backgroundColor: (ctx) => {
+          const chart = ctx.chart
+          const { ctx: canvasCtx, chartArea } = chart
+          if (!chartArea) return '#FF6F00'
+          const gradient = canvasCtx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top)
+          gradient.addColorStop(0, '#FFB74D')
+          gradient.addColorStop(1, '#E65100')
+          return gradient
+        },
         data: memberOwes,
         borderRadius: 4,
       },

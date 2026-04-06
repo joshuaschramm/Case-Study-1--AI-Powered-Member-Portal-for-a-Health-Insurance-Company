@@ -3,6 +3,23 @@ import { computed } from 'vue'
 import { useWellnessStore } from '../stores/wellness'
 import { Line } from 'vue-chartjs'
 
+// Chart.js plugin to create gradient fills
+const gradientPlugin = {
+  id: 'gradientFill',
+  beforeDraw(chart) {
+    const { ctx, chartArea } = chart
+    if (!chartArea) return
+    chart.data.datasets.forEach((dataset, i) => {
+      if (dataset._gradientColors) {
+        const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom)
+        gradient.addColorStop(0, dataset._gradientColors[0])
+        gradient.addColorStop(1, dataset._gradientColors[1])
+        chart.data.datasets[i].backgroundColor = gradient
+      }
+    })
+  },
+}
+
 const wellnessStore = useWellnessStore()
 
 function priorityColor(priority) {
@@ -18,6 +35,7 @@ const stepsChartData = computed(() => ({
       data: wellnessStore.weeklyActivity.steps,
       borderColor: '#1565C0',
       backgroundColor: 'rgba(21, 101, 192, 0.1)',
+      _gradientColors: ['rgba(21, 101, 192, 0.35)', 'rgba(21, 101, 192, 0.02)'],
       fill: true,
       tension: 0.4,
       pointRadius: 5,
@@ -54,6 +72,7 @@ const scoreChartData = computed(() => ({
       data: wellnessStore.monthlyScores.scores,
       borderColor: '#00897B',
       backgroundColor: 'rgba(0, 137, 123, 0.1)',
+      _gradientColors: ['rgba(0, 137, 123, 0.35)', 'rgba(0, 137, 123, 0.02)'],
       fill: true,
       tension: 0.4,
       pointRadius: 5,
@@ -147,7 +166,7 @@ const scoreChartOptions = {
         <v-card class="rounded-lg pa-4" height="100%">
           <div class="text-body-1 font-weight-bold mb-3">Weekly Step Activity</div>
           <div style="height: 260px;">
-            <Line :data="stepsChartData" :options="stepsChartOptions" />
+            <Line :data="stepsChartData" :options="stepsChartOptions" :plugins="[gradientPlugin]" />
           </div>
         </v-card>
       </v-col>
@@ -155,7 +174,7 @@ const scoreChartOptions = {
         <v-card class="rounded-lg pa-4" height="100%">
           <div class="text-body-1 font-weight-bold mb-3">Wellness Score Trend</div>
           <div style="height: 260px;">
-            <Line :data="scoreChartData" :options="scoreChartOptions" />
+            <Line :data="scoreChartData" :options="scoreChartOptions" :plugins="[gradientPlugin]" />
           </div>
         </v-card>
       </v-col>

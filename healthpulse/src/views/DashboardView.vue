@@ -30,12 +30,12 @@ function formatDate(dateStr) {
 <template>
   <div>
     <!-- Welcome Banner -->
-    <v-card color="primary" variant="flat" class="mb-6 rounded-lg" dark>
+    <v-card variant="flat" class="mb-6 rounded-lg welcome-gradient" dark>
       <v-card-text class="pa-6">
         <v-row align="center">
           <v-col cols="12" md="8">
             <div class="text-h5 font-weight-bold text-white mb-1">
-              Welcome back, {{ memberStore.member.firstName }}! 👋
+              Welcome back, {{ memberStore.member.firstName }}!
             </div>
             <div class="text-body-1 text-blue-lighten-3">
               {{ memberStore.member.planName }} &mdash; Member ID: {{ memberStore.member.memberId }}
@@ -241,5 +241,9 @@ function formatDate(dateStr) {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
   transform: translateY(-2px);
   transition: all 0.2s ease;
+}
+.welcome-gradient {
+  background: linear-gradient(135deg, #1565C0 0%, #0D47A1 40%, #00897B 100%) !important;
+  color: white;
 }
 </style>

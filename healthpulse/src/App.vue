@@ -20,10 +20,10 @@ const navItems = routes.map((r) => ({
 <template>
   <v-app>
     <!-- App Bar -->
-    <v-app-bar color="primary" prominent dark>
+    <v-app-bar class="app-bar-gradient" prominent theme="dark">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <v-icon class="ml-2 mr-3" size="32">mdi-hospital-box</v-icon>
-      <v-app-bar-title>
+      <v-icon class="ml-2" style="margin-right: 8px;" size="32">mdi-hospital-box</v-icon>
+      <v-app-bar-title style="margin-left: 0; flex: none;">
         <span class="font-weight-bold">Health</span><span class="font-weight-light">Pulse</span>
       </v-app-bar-title>
 
@@ -70,11 +70,6 @@ const navItems = routes.map((r) => ({
         :subtitle="rail ? '' : memberStore.member.planName"
         class="py-4"
       >
-        <template #prepend>
-          <v-avatar color="primary" size="40" class="mr-2">
-            <v-icon color="white">mdi-hospital-box</v-icon>
-          </v-avatar>
-        </template>
         <template #append>
           <v-btn
             icon
@@ -131,5 +126,8 @@ const navItems = routes.map((r) => ({
 <style>
 html {
   overflow-y: auto !important;
+}
+.app-bar-gradient {
+  background: linear-gradient(135deg, #1565C0 0%, #0D47A1 50%, #0A3D8F 100%) !important;
 }
 </style>
