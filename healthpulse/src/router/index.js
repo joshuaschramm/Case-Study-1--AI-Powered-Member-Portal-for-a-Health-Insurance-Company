@@ -11,7 +11,7 @@ const routes = [
     path: '/benefits',
     name: 'Benefits',
     component: () => import('../views/BenefitsView.vue'),
-    meta: { icon: 'mdi-shield-heart', title: 'Benefits Assistant' },
+    meta: { icon: 'mdi-chat-processing-outline', title: 'Benefits Assistant' },
   },
   {
     path: '/providers',

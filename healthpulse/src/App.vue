@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useDisplay } from 'vuetify'
 import { routes } from './router'
 import { useMemberStore } from './stores/member'
 
@@ -8,6 +9,7 @@ const drawer = ref(true)
 const rail = ref(false)
 const router = useRouter()
 const route = useRoute()
+const { mdAndUp, smAndDown } = useDisplay()
 const memberStore = useMemberStore()
 
 const navItems = routes.map((r) => ({
@@ -21,7 +23,7 @@ const navItems = routes.map((r) => ({
   <v-app>
     <!-- App Bar -->
     <v-app-bar class="app-bar-gradient" prominent theme="dark">
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-app-bar-nav-icon v-if="mdAndUp" @click="drawer = !drawer" />
       <v-icon class="ml-2" style="margin-right: 8px;" size="32">mdi-hospital-box</v-icon>
       <v-app-bar-title style="margin-left: 0; flex: none;">
         <span class="font-weight-bold">Health</span><span class="font-weight-light">Pulse</span>
@@ -58,8 +60,9 @@ const navItems = routes.map((r) => ({
       </v-menu>
     </v-app-bar>
 
-    <!-- Navigation Drawer -->
+    <!-- Navigation Drawer (desktop/tablet only) -->
     <v-navigation-drawer
+      v-if="mdAndUp"
       v-model="drawer"
       :rail="rail"
       permanent
@@ -116,10 +119,29 @@ const navItems = routes.map((r) => ({
 
     <!-- Main Content -->
     <v-main>
-      <v-container fluid class="pa-6">
+      <v-container fluid class="pa-6" :class="{ 'pb-mobile': smAndDown }">
         <router-view />
       </v-container>
     </v-main>
+
+    <!-- Bottom Navigation (mobile only) -->
+    <v-bottom-navigation
+      v-if="smAndDown"
+      grow
+      color="primary"
+      class="bottom-nav"
+    >
+      <v-btn
+        v-for="item in navItems"
+        :key="item.to"
+        :to="item.to"
+        :active="route.path === item.to"
+        size="small"
+      >
+        <v-icon>{{ item.icon }}</v-icon>
+        <span class="text-caption">{{ item.title }}</span>
+      </v-btn>
+    </v-bottom-navigation>
   </v-app>
 </template>
 
@@ -129,5 +151,21 @@ html {
 }
 .app-bar-gradient {
   background: linear-gradient(135deg, #1565C0 0%, #0D47A1 50%, #0A3D8F 100%) !important;
+}
+.pb-mobile {
+  padding-bottom: 80px !important;
+}
+.bottom-nav {
+  position: fixed !important;
+  bottom: 0;
+  z-index: 1000;
+}
+.bottom-nav .v-btn {
+  min-width: 0 !important;
+}
+.bottom-nav .text-caption {
+  font-size: 0.625rem !important;
+  line-height: 1.2;
+  margin-top: 2px;
 }
 </style>
