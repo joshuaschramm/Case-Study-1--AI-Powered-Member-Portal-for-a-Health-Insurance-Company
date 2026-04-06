@@ -1,0 +1,40 @@
+{
+  "member": {
+    "id": "MHP-2024-88421",
+    "firstName": "Sarah",
+    "lastName": "Chen",
+    "email": "sarah.chen@email.com",
+    "phone": "(555) 234-5678",
+    "dateOfBirth": "1988-03-15",
+    "memberId": "MHP-2024-88421",
+    "groupNumber": "GRP-7742",
+    "planName": "Meridian Gold PPO",
+    "planType": "PPO",
+    "effectiveDate": "2025-01-01",
+    "terminationDate": null,
+    "primaryCarePhysician": "Dr. James Wilson",
+    "avatar": null
+  },
+  "coverage": {
+    "deductible": { "individual": 1500, "family": 3000, "met": 875.50 },
+    "outOfPocketMax": { "individual": 6000, "family": 12000, "met": 1240.00 },
+    "coinsurance": 80,
+    "copays": {
+      "primaryCare": 25,
+      "specialist": 50,
+      "urgentCare": 75,
+      "emergencyRoom": 250,
+      "genericRx": 10,
+      "preferredBrandRx": 35,
+      "nonPreferredBrandRx": 70
+    }
+  },
+  "planHighlights": [
+    "No referral needed for specialists",
+    "Telehealth visits covered at $0 copay",
+    "Preventive care covered at 100%",
+    "Out-of-network coverage at 60% after deductible",
+    "Mental health parity — same copays as medical",
+    "Prescription mail-order: 90-day supply for 2x copay"
+  ]
+}

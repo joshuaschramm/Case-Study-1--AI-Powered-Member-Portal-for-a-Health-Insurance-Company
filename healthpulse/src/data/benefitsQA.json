@@ -1,0 +1,46 @@
+[
+  {
+    "patterns": ["deductible", "how much is my deductible", "deductible amount", "what's my deductible"],
+    "response": "Your **Meridian Gold PPO** plan has an individual deductible of **$1,500** (family: $3,000). So far this year, you've met **$875.50** of your individual deductible. That means you have **$624.50** remaining before your plan begins paying its share at 80% coinsurance."
+  },
+  {
+    "patterns": ["copay", "co-pay", "office visit cost", "how much for a visit", "what's my copay"],
+    "response": "Here are your copays under the **Meridian Gold PPO**:\n\n- **Primary Care:** $25\n- **Specialist:** $50\n- **Urgent Care:** $75\n- **Emergency Room:** $250\n- **Generic Rx:** $10\n- **Preferred Brand Rx:** $35\n- **Non-Preferred Brand Rx:** $70\n\nRemember, telehealth visits are covered at **$0 copay**!"
+  },
+  {
+    "patterns": ["out of pocket", "out-of-pocket", "oop max", "maximum out of pocket"],
+    "response": "Your out-of-pocket maximum is **$6,000** for an individual ($12,000 family). You've spent **$1,240.00** so far this year, meaning you have **$4,760** remaining. Once you reach $6,000, the plan pays 100% of covered services for the rest of the year."
+  },
+  {
+    "patterns": ["specialist", "do i need a referral", "referral", "see a specialist"],
+    "response": "Great news! With your **PPO plan**, you do **not** need a referral to see a specialist. You can book directly with any in-network specialist. Your specialist copay is **$50** per visit. Would you like me to help you search for a specific type of specialist?"
+  },
+  {
+    "patterns": ["prescription", "medication", "drug coverage", "pharmacy", "rx"],
+    "response": "Your prescription coverage tiers are:\n\n- **Generic:** $10 copay\n- **Preferred Brand:** $35 copay\n- **Non-Preferred Brand:** $70 copay\n\n💡 **Tip:** Use mail-order pharmacy for a 90-day supply at just 2x the copay — that's only $20 for generics!"
+  },
+  {
+    "patterns": ["telehealth", "virtual visit", "video visit", "online doctor"],
+    "response": "Telehealth visits are covered at **$0 copay** on your plan! You can connect with a doctor 24/7 for non-emergency issues like cold/flu, allergies, skin conditions, and mental health. Just log in to the Meridian Health app or call (800) 555-TELE."
+  },
+  {
+    "patterns": ["mental health", "therapy", "counseling", "behavioral health", "psychiatrist"],
+    "response": "Your plan provides **full mental health parity** — meaning mental health visits have the same copays as medical visits:\n\n- **In-network therapist/psychiatrist:** $50 copay\n- **Telehealth mental health:** $0 copay\n\nNo referral is needed. You can search for behavioral health providers in the Find Providers section."
+  },
+  {
+    "patterns": ["preventive", "wellness exam", "annual physical", "checkup", "screening"],
+    "response": "Preventive care is covered at **100%** with no copay, no deductible! This includes:\n\n- Annual physical exam\n- Immunizations (flu, COVID, etc.)\n- Routine screenings (mammogram, colonoscopy, etc.)\n- Well-woman visits\n- Routine bloodwork\n\nMake sure to use an in-network provider to get the full benefit."
+  },
+  {
+    "patterns": ["emergency", "emergency room", "er visit", "ambulance"],
+    "response": "For emergencies:\n\n- **Emergency Room copay:** $250 (waived if admitted)\n- **Ambulance:** Covered at 80% after deductible\n\n⚠️ If it's not a true emergency, consider **Urgent Care ($75 copay)** or **Telehealth ($0 copay)** to save on costs. In a real emergency, always call 911 — your plan covers ER visits at any hospital regardless of network."
+  },
+  {
+    "patterns": ["claim", "claims", "claim status", "my claims"],
+    "response": "You have **8 claims** on file this year. Your most recent claims:\n\n- **Mar 25** — Telehealth (seasonal allergies) — *Pending*\n- **Mar 20** — Mental health evaluation — *Pending*\n- **Mar 1** — Annual wellness exam — $0 owed ✅\n\nYou can view all your claims with full details in the **Claims History** section."
+  },
+  {
+    "patterns": ["default"],
+    "response": "I can help you understand your health benefits! Try asking about:\n\n- 💰 **Deductible** or **out-of-pocket costs**\n- 🏥 **Copays** for visits or prescriptions\n- 👨‍⚕️ **Specialist referrals**\n- 📱 **Telehealth** options\n- 🧠 **Mental health** coverage\n- 🩺 **Preventive care** benefits\n- 🚑 **Emergency** coverage\n- 📋 **Claims** status\n\nJust type your question and I'll find the answer!"
+  }
+]

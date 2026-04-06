@@ -1,0 +1,88 @@
+{
+  "wellnessScore": 78,
+  "goals": [
+    {
+      "id": "goal-1",
+      "title": "Daily Steps",
+      "target": 10000,
+      "current": 7450,
+      "unit": "steps",
+      "icon": "mdi-walk",
+      "color": "#1565C0"
+    },
+    {
+      "id": "goal-2",
+      "title": "Water Intake",
+      "target": 8,
+      "current": 5,
+      "unit": "glasses",
+      "icon": "mdi-cup-water",
+      "color": "#00897B"
+    },
+    {
+      "id": "goal-3",
+      "title": "Sleep",
+      "target": 8,
+      "current": 6.5,
+      "unit": "hours",
+      "icon": "mdi-sleep",
+      "color": "#7B1FA2"
+    },
+    {
+      "id": "goal-4",
+      "title": "Mindfulness",
+      "target": 15,
+      "current": 10,
+      "unit": "minutes",
+      "icon": "mdi-meditation",
+      "color": "#FF6F00"
+    }
+  ],
+  "weeklyActivity": {
+    "labels": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "steps": [8200, 6500, 9100, 7450, 10200, 11500, 5400],
+    "calories": [2100, 1850, 2300, 2050, 2400, 2650, 1700]
+  },
+  "recommendations": [
+    {
+      "id": "rec-1",
+      "title": "Schedule Your Annual Eye Exam",
+      "description": "Your records show it's been over 12 months since your last vision screening. Your plan covers one routine eye exam per year at no cost.",
+      "category": "Preventive Care",
+      "icon": "mdi-eye",
+      "priority": "high",
+      "actionLabel": "Find Eye Doctors"
+    },
+    {
+      "id": "rec-2",
+      "title": "Flu Shot Reminder",
+      "description": "Flu season peak is approaching. Your plan covers flu vaccination at $0 copay at any in-network pharmacy.",
+      "category": "Immunization",
+      "icon": "mdi-needle",
+      "priority": "medium",
+      "actionLabel": "Find Pharmacies"
+    },
+    {
+      "id": "rec-3",
+      "title": "Try Our Stress Management Program",
+      "description": "Based on your recent behavioral health visit, you may benefit from our 8-week digital stress management program — included with your plan.",
+      "category": "Mental Health",
+      "icon": "mdi-head-heart",
+      "priority": "medium",
+      "actionLabel": "Learn More"
+    },
+    {
+      "id": "rec-4",
+      "title": "Increase Daily Step Goal",
+      "description": "You've been averaging 7,500 steps per day. Try increasing to 8,500 for the next two weeks to build a stronger habit.",
+      "category": "Fitness",
+      "icon": "mdi-shoe-sneaker",
+      "priority": "low",
+      "actionLabel": "Update Goal"
+    }
+  ],
+  "monthlyScores": {
+    "labels": ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
+    "scores": [65, 68, 70, 72, 75, 78]
+  }
+}
