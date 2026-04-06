@@ -10,10 +10,10 @@ const wellnessStore = useWellnessStore()
 const router = useRouter()
 
 const quickActions = [
-  { title: 'Ask About Benefits', icon: 'mdi-chat-question', color: 'primary', to: '/benefits' },
-  { title: 'Find a Doctor', icon: 'mdi-magnify', color: 'secondary', to: '/providers' },
-  { title: 'View Claims', icon: 'mdi-file-document', color: 'accent', to: '/claims' },
-  { title: 'Wellness Score', icon: 'mdi-heart-pulse', color: '#7B1FA2', to: '/wellness' },
+  { title: 'Ask About Benefits', icon: 'mdi-chat-question', color: 'primary', hex: '#1565C0', to: '/benefits' },
+  { title: 'Find a Doctor', icon: 'mdi-magnify', color: 'secondary', hex: '#00897B', to: '/providers' },
+  { title: 'View Claims', icon: 'mdi-file-document', color: 'accent', hex: '#FF6F00', to: '/claims' },
+  { title: 'Wellness Score', icon: 'mdi-heart-pulse', color: '#7B1FA2', hex: '#7B1FA2', to: '/wellness' },
 ]
 
 const recentClaims = claimsStore.filteredClaims.slice(0, 3)
@@ -63,7 +63,7 @@ function formatDate(dateStr) {
       <v-col v-for="action in quickActions" :key="action.title" cols="6" md="3">
         <v-card
           class="text-center pa-4 rounded-lg cursor-pointer hover-elevation"
-          :style="{ borderTop: `3px solid ${action.color}` }"
+          :style="{ borderTop: `3px solid ${action.hex}` }"
           @click="router.push(action.to)"
           hover
         >
