@@ -193,11 +193,12 @@ const scoreChartOptions = {
           :key="rec.id"
           cols="12"
           md="6"
+          class="d-flex"
         >
           <v-card
             variant="outlined"
-            class="pa-4 rounded-lg mb-2"
-            :style="{ borderLeft: `4px solid var(--v-theme-${priorityColor(rec.priority)})` }"
+            class="pa-4 rounded-lg mb-2 flex-grow-1"
+            :style="{ borderColor: `rgb(var(--v-theme-${priorityColor(rec.priority)}))` }"
           >
             <div class="d-flex align-start">
               <v-avatar :color="priorityColor(rec.priority)" variant="tonal" size="40" class="mr-3 flex-shrink-0">
