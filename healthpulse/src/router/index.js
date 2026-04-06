@@ -31,6 +31,18 @@ const routes = [
     component: () => import('../views/WellnessView.vue'),
     meta: { icon: 'mdi-heart-pulse', title: 'Wellness' },
   },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/ProfileView.vue'),
+    meta: { icon: 'mdi-account-outline', title: 'My Profile', hidden: true },
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: () => import('../views/SettingsView.vue'),
+    meta: { icon: 'mdi-cog-outline', title: 'Settings', hidden: true },
+  },
 ]
 
 const router = createRouter({

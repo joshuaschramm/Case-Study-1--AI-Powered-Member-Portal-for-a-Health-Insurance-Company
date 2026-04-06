@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "type": "claim",
+    "icon": "mdi-file-document-check-outline",
+    "color": "success",
+    "title": "Claim Processed",
+    "message": "Your claim from Meridian Radiology Group for $320.00 has been processed. Your responsibility: $64.00.",
+    "date": "2026-03-18T14:30:00",
+    "read": false,
+    "link": "/claims"
+  },
+  {
+    "id": 2,
+    "type": "wellness",
+    "icon": "mdi-trophy-outline",
+    "color": "accent",
+    "title": "Weekly Step Goal Achieved!",
+    "message": "Congratulations! You hit your 8,000 step goal 5 out of 7 days this week. Keep it up!",
+    "date": "2026-03-17T09:00:00",
+    "read": false,
+    "link": "/wellness"
+  },
+  {
+    "id": 3,
+    "type": "reminder",
+    "icon": "mdi-calendar-clock",
+    "color": "primary",
+    "title": "Upcoming Appointment",
+    "message": "Reminder: You have a checkup with Dr. James Wilson on March 25 at 10:00 AM.",
+    "date": "2026-03-16T08:00:00",
+    "read": false,
+    "link": "/providers"
+  },
+  {
+    "id": 4,
+    "type": "benefit",
+    "icon": "mdi-information-outline",
+    "color": "secondary",
+    "title": "Preventive Screening Due",
+    "message": "Based on your age and plan, you're due for an annual wellness exam. Schedule at no cost to you.",
+    "date": "2026-03-14T11:15:00",
+    "read": true,
+    "link": "/benefits"
+  },
+  {
+    "id": 5,
+    "type": "claim",
+    "icon": "mdi-clock-outline",
+    "color": "warning",
+    "title": "Claim Pending Review",
+    "message": "Your claim from Citywide Pediatrics for $175.00 is pending insurance review.",
+    "date": "2026-03-12T16:45:00",
+    "read": true,
+    "link": "/claims"
+  }
+]

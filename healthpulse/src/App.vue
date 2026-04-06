@@ -4,6 +4,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useDisplay } from 'vuetify'
 import { routes } from './router'
 import { useMemberStore } from './stores/member'
+import { useNotificationsStore } from './stores/notifications'
 
 const drawer = ref(true)
 const rail = ref(false)
@@ -11,12 +12,15 @@ const router = useRouter()
 const route = useRoute()
 const { mdAndUp, smAndDown } = useDisplay()
 const memberStore = useMemberStore()
+const notificationsStore = useNotificationsStore()
 
-const navItems = routes.map((r) => ({
-  title: r.meta.title,
-  icon: r.meta.icon,
-  to: r.path,
-}))
+const navItems = routes
+  .filter((r) => !r.meta.hidden)
+  .map((r) => ({
+    title: r.meta.title,
+    icon: r.meta.icon,
+    to: r.path,
+  }))
 </script>
 
 <template>
@@ -31,10 +35,80 @@ const navItems = routes.map((r) => ({
 
       <v-spacer />
 
-      <v-btn icon>
-        <v-icon>mdi-bell-outline</v-icon>
-        <v-badge color="error" content="3" floating />
-      </v-btn>
+      <v-menu :close-on-content-click="false" max-width="400" min-width="360">
+        <template #activator="{ props }">
+          <v-btn icon v-bind="props">
+            <v-icon>mdi-bell-outline</v-icon>
+            <v-badge
+              v-if="notificationsStore.unreadCount > 0"
+              color="error"
+              :content="notificationsStore.unreadCount"
+              floating
+            />
+          </v-btn>
+        </template>
+        <v-card rounded="lg">
+          <v-card-title class="d-flex align-center py-3 px-4">
+            <span class="text-subtitle-1 font-weight-bold">Notifications</span>
+            <v-spacer />
+            <v-btn
+              v-if="notificationsStore.unreadCount > 0"
+              variant="text"
+              color="primary"
+              size="x-small"
+              @click="notificationsStore.markAllAsRead()"
+            >
+              Mark all read
+            </v-btn>
+          </v-card-title>
+          <v-divider />
+          <v-list density="compact" max-height="380" class="overflow-y-auto pa-0">
+            <template
+              v-for="notification in notificationsStore.sortedNotifications"
+              :key="notification.id"
+            >
+              <v-list-item
+                :class="{ 'bg-blue-lighten-5': !notification.read }"
+                class="py-3"
+                @click="notificationsStore.markAsRead(notification.id); router.push(notification.link)"
+              >
+                <template #prepend>
+                  <v-avatar :color="notification.color" size="36" class="mr-3">
+                    <v-icon size="18" color="white">{{ notification.icon }}</v-icon>
+                  </v-avatar>
+                </template>
+                <v-list-item-title class="text-body-2 font-weight-medium" style="white-space: normal;">
+                  {{ notification.title }}
+                </v-list-item-title>
+                <v-list-item-subtitle class="text-caption" style="white-space: normal; -webkit-line-clamp: 2;">
+                  {{ notification.message }}
+                </v-list-item-subtitle>
+                <template #append>
+                  <div class="d-flex flex-column align-end">
+                    <span class="text-caption text-medium-emphasis">
+                      {{ notificationsStore.formatDate(notification.date) }}
+                    </span>
+                    <v-icon
+                      v-if="!notification.read"
+                      size="8"
+                      color="primary"
+                      class="mt-1"
+                    >
+                      mdi-circle
+                    </v-icon>
+                  </div>
+                </template>
+              </v-list-item>
+              <v-divider />
+            </template>
+          </v-list>
+          <v-card-actions class="justify-center">
+            <v-btn variant="text" color="primary" size="small">
+              View All Notifications
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-menu>
 
       <v-menu>
         <template #activator="{ props }">
@@ -52,8 +126,8 @@ const navItems = routes.map((r) => ({
             <v-list-item-subtitle>{{ memberStore.member.memberId }}</v-list-item-subtitle>
           </v-list-item>
           <v-divider />
-          <v-list-item prepend-icon="mdi-account-outline" title="My Profile" />
-          <v-list-item prepend-icon="mdi-cog-outline" title="Settings" />
+          <v-list-item prepend-icon="mdi-account-outline" title="My Profile" @click="router.push('/profile')" />
+          <v-list-item prepend-icon="mdi-cog-outline" title="Settings" @click="router.push('/settings')" />
           <v-divider />
           <v-list-item prepend-icon="mdi-logout" title="Sign Out" />
         </v-list>
